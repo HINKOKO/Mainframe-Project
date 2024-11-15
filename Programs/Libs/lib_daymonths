@@ -1,0 +1,35 @@
+     ***** ATTENTION INDENTATION !! *********
+
+
+       01 DAYS-LIST.                                
+          05 DAY-01 PIC X(10) VALUE 'LUNDI   '.     
+          05 DAY-02 PIC X(10) VALUE 'MARDI   '.     
+          05 DAY-03 PIC X(10) VALUE 'MERCREDI'.     
+          05 DAY-04 PIC X(10) VALUE 'JEUDI   '.     
+          05 DAY-05 PIC X(10) VALUE 'VENDREDI'.     
+          05 DAY-06 PIC X(10) VALUE 'SAMEDI  '.     
+          05 DAY-07 PIC X(10) VALUE 'DIMANCHE'.     
+       01 DAYS-TABLE REDEFINES DAYS-LIST.           
+           05 NAME-OF-DAY  PIC X(10) OCCURS 7 TIMES.
+                                                    
+       01 MONTH-LIST.                               
+          05 MONTH-01 PIC X(09) VALUE 'JANVIER'.    
+          05 MONTH-02 PIC X(09) VALUE 'FEVRIER'.    
+          05 MONTH-03 PIC X(09) VALUE 'MARS'.       
+          05 MONTH-04 PIC X(09) VALUE 'AVRIL'.
+           05 MONTH-05 PIC X(09) VALUE 'MAI'.            
+           05 MONTH-06 PIC X(09) VALUE 'JUIN'.           
+           05 MONTH-07 PIC X(09) VALUE 'JUILLET'.        
+           05 MONTH-08 PIC X(09) VALUE 'AOUT'.           
+           05 MONTH-09 PIC X(09) VALUE 'SEPTEMBRE'.      
+           05 MONTH-10 PIC X(09) VALUE 'OCTOBRE'.        
+           05 MONTH-11 PIC X(09) VALUE 'NOVEMBRE'.       
+           05 MONTH-12 PIC X(09) VALUE 'DECEMBRE'.       
+        01 MONTH-TABLE REDEFINES MONTH-LIST.             
+           05 NAME-OF-MONTH  PIC X(09) OCCURS 12 TIMES.  
+                                                  
+       01 DAY-NUM    PIC 9.                             
+       01 TMP-DAY    PIC X(10).                         
+                                                        
+       01 MONTH-NUM  PIC 99.                            
+       01 TMP-MONTH  PIC X(10).                             
