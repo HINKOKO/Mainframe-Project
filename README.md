@@ -26,7 +26,7 @@ The goal is to insert new products received from company **AJCFRAME**, in order 
 
 ## **Authors**
 
-Rémi, Matthieu && Hinkoko
+Rémi, Mathieu && Hinkoko
 
  
 
