@@ -6,6 +6,7 @@
       *      - CREATE AN XML FILE FOR CONSULTING            *
       *      COMPANY IN MARKET STUDY                        *
       *      - SORT PRODUCTS  BY BEST RANKING               *
+      *  Dependencies -> copybook 'stxml' (apixx.cob.cpy)   *
       *******************************************************
                
        ENVIRONMENT DIVISION.
