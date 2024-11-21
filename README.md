@@ -1,4 +1,4 @@
-# **No Mainframe, No Life**
+<h1 style="text-align: center; font-weight: bold; font-size: 38px">No Mainframe, No Life</h1>
 
 ![screen](./assets/mainframe.webp)
 
