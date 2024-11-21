@@ -141,7 +141,7 @@
            END-IF
            .
        
-		** USD-CONVERT - perform the USD dollar conversion before DB2 insertion 
+      ** USD-CONVERT - perform the USD dollar conversion before DB2 insertion 
        USD-CONVERT.
            CALL WS-SSPROG USING
                     PROD-DEVISE
@@ -171,7 +171,7 @@
             MOVE LENGTH OF PROD-DESC TO PR-DESCRIPTION-LEN
             MOVE PROD-DESC           TO PR-DESCRIPTION-TEXT.
        
-		** INSERT-DB - perform the DB2 Insertion after all validations checked 
+      ** INSERT-DB - perform the DB2 Insertion after all validations checked 
        INSERT-DB.
            EXEC SQL
              INSERT INTO API2.PRODUCTS
@@ -182,7 +182,7 @@
            END-EXEC
            PERFORM EVAL-INSERT.
        
-		** EVAL-INSERT - evaluates the SQLCODE returned by DB2 and trigger a relevant action
+      ** EVAL-INSERT - evaluates the SQLCODE returned by DB2 and trigger a relevant action
        EVAL-INSERT.
            EVALUATE TRUE
                WHEN SQLCODE = ZERO
@@ -200,7 +200,7 @@
             END-EVALUATE
             .
        
-		** WRITE-LOG - writes a log report for rejected products 
+      ** WRITE-LOG - writes a log report for rejected products 
        WRITE-LOG.
            COMPUTE LOG-REF-TO = CSV-LINE
            MOVE    PROD-NO        TO LOG-PNO
