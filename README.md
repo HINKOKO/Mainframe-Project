@@ -1,6 +1,6 @@
 # **No Mainframe, No Life**
 
-![screen](./assets/screen_Readme.png)
+![screen](./assets/mainframe.webp)
 
 ## **Overview**
 
@@ -18,8 +18,12 @@ Join us as we embark on a data-driven adventure to transform AJCFRAME's operatio
 
 - **Mainframe Access:**
 
-  - The **WC3270** -> A reliable terminal emulator to connect to the mainframe system.
+  - The **WC3270** -> A reliable terminal emulator to connect to the mainframe system, coupled to the **ISPF** utility
+  ![screen](./assets/screen_Readme.png)
+
   - Necessary Authorizations: Obtain appropriate permissions to access the required data and execute the necessary jobs.
+
+
 - **Data Programs and Utilities:**
 
   - Data Programs: As a starter, you will need the initial data contained in the [data-starter folder](./assets) <br>
