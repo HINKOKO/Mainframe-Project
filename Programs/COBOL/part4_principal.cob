@@ -25,9 +25,10 @@
        WORKING-STORAGE SECTION.
        COPY STXML.
        
-       01 XML-PROLOG.
-          05 FILLER         PIC X(38)
-            VALUE '<?XML VERSION="1.0" ENCODING="UTF-8"?>'.
+       01 XML-PROLOG.                                                 
+           05 FILLER         PIC X(38).                                
+       01 PROLOG             PIC X(38)                                 
+               VALUE '<?XML VERSION="1.0" ENCODING="UTF-8"?>'. 
        01 DESIG-STRING      PIC X(79).
        
        01 LINE-COUNT        PIC 9(03) VALUE 0.
@@ -69,9 +70,10 @@
        PROCEDURE DIVISION.
            OPEN OUTPUT ENRXML
            
-      ***************************************************
-        WRITING THE XML PROLOGUE TO MEET XML STANDARDS   *
-      ***************************************************
+      **************************************************** 
+      * WRITING THE XML PROLOGUE TO MEET XML STANDARDS   * 
+      **************************************************** 
+           MOVE FUNCTION LOWER-CASE(PROLOG) TO XML-PROLOG  
            WRITE ENR-XML FROM XML-PROLOG
            EXEC SQL OPEN CITEMS END-EXEC
            PERFORM TEST-SQLCODE
