@@ -23,7 +23,7 @@
        01 L-SEP               PIC X(30) VALUE ALL '*'.                  
        01 RESULT              PIC 9(3)V9(2).                            
        01 EXPECTED            PIC 9(3)V9(2).                            
-       01 EXPECTED-MSG        PIC X(11) VALUE 'INTROUVABLE'.            
+       01 EXPECTED-MSG        PIC X(20) VALUE 'MONEY CODE NOT FOUND'.            
                                                                         
       *** FOR CALLING & HANDLING ROUTINE RESPONSE                         
        01 LK-DEV-CODE         PIC X(2).                                 
