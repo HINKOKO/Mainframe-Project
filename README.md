@@ -4,7 +4,7 @@
 
 ## **Overview**
 
-Join us as we embark on a data-driven adventure to transform AJCFRAME's operations. By harnessing the power of DB2 and advanced data integration techniques, we'll create a robust and scalable data infrastructure. This project will lay the foundation for future innovations, empowering AJCFRAME to make data-driven decisions that drive growth and success.
+Join us as we embark on a data-driven adventure to transform **AJCFRAME company** operations. By harnessing the power of DB2 and advanced data integration techniques, we'll create a robust and scalable data infrastructure. This project will lay the foundation for future innovations, empowering AJCFRAME to make data-driven decisions that drive growth and success.
 <p align="center">
 	<img src="./assets/IBM.jpg" width="225">
 </p>
