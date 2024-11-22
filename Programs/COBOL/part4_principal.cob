@@ -1,6 +1,6 @@
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. PART4P.
-       AUTHOR.     HINKOKO.
+       IDENTIFICATION  DIVISION.
+       PROGRAM-ID.       PART4P.
+       AUTHOR.          HINKOKO.
       *******************************************************
       *    THIS PROGRAM IS INTENDED TO :                    *
       *      - CREATE AN XML FILE FOR CONSULTING            *
@@ -8,7 +8,7 @@
       *      - SORT PRODUCTS  BY BEST RANKING               *
       *  Dependencies -> copybook 'stxml' (apixx.cob.cpy)   *
       *******************************************************
-               
+       
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        SPECIAL-NAMES.
@@ -24,6 +24,10 @@
        
        WORKING-STORAGE SECTION.
        COPY STXML.
+       
+       01 XML-PROLOG.
+          05 FILLER         PIC X(38)
+            VALUE '<?XML VERSION="1.0" ENCODING="UTF-8"?>'.
        01 DESIG-STRING      PIC X(79).
        
        01 LINE-COUNT        PIC 9(03) VALUE 0.
@@ -60,10 +64,15 @@
                 GROUP BY I.P_NO, P.DESCRIPTION
                 ORDER BY VOL DESC
            END-EXEC
-    
-    ***********************************************
+       
+      ***********************************************
        PROCEDURE DIVISION.
            OPEN OUTPUT ENRXML
+           
+      ***************************************************
+        WRITING THE XML PROLOGUE TO MEET XML STANDARDS   *
+      ***************************************************
+           WRITE ENR-XML FROM XML-PROLOG
            EXEC SQL OPEN CITEMS END-EXEC
            PERFORM TEST-SQLCODE
        
@@ -75,8 +84,8 @@
            CLOSE ENRXML
        
            GOBACK.
-    
-      * PARAGRAPHS
+       
+      *** PARAGRAPHS ***
        RANK-ITEMS.
            PERFORM FETCH-ITEMS
            MOVE 1 TO WS-RANK
@@ -102,7 +111,7 @@
            MOVE IT-VOLUME  TO VOL-VALUE
            MOVE IT-P-NO    TO PROD-NUMBER
        
-      ** STARTING TO WRITE ***
+       ** STARTING TO WRITE ***
            IF LINE-COUNT + PROD-LINE-COUNT > PAGE-LIMIT
               WRITE ENR-XML FROM SEP AFTER ADVANCING PAGE
               MOVE 0 TO LINE-COUNT
@@ -117,7 +126,6 @@
            WRITE ENR-XML FROM ST-CLOSE-PROD
        
            ADD PROD-LINE-COUNT TO LINE-COUNT
-           DISPLAY WS-RANK LINE-COUNT
            .
        
        STRINGIFY-DESIG-AND-VOLUME.
@@ -143,8 +151,9 @@
               PR-DESCRIPTION-TEXT(1:PR-DESCRIPTION-LEN) TO ED-DESIG
            MOVE IT-VOLUME TO ED-VOLUME
            MOVE WS-RANK TO ED-RANK
-           DISPLAY 'PRODUCT NUMBER: ' IT-P-NO ' |'
-               ' RANKED: ' ED-RANK '| DESIGNATED AS: ' ED-DESIG
+           DISPLAY 'RANKED AS NUMBER: ' ED-RANK
+                   '| PRODUCT NUMBER: ' IT-P-NO
+                   '| DESIGNATED AS: ' ED-DESIG
            DISPLAY 'HAS BEING SOLD: ' ED-VOLUME ' TIMES.'
            .
        
@@ -169,4 +178,4 @@
            EXEC SQL ROLLBACK END-EXEC
            DISPLAY 'ROLLING BACK TO PREV TABLE STATE'
            COMPUTE WS-ANO = 1 / WS-ANO.
-   
+       
