@@ -5,9 +5,9 @@
                                                                         
        01 OPENING-PRODUCT.                                              
           05 FILLER         PIC X(05) VALUE SPACES.                     
-          05 OPEN-PROD      PIC X(16) VALUE '<PRODUCT NUMBER='.         
+          05 OPEN-PROD      PIC X(17) VALUE '<PRODUCT NUMBER="'.         
           05 PROD-NUMBER    PIC X(03).                                  
-          05 END-V-PROD     PIC X(01) VALUE '>'.                        
+          05 END-V-PROD     PIC X(02) VALUE '">'.                        
                                                                         
        01 ST-RANK.                                                      
           05 FILLER         PIC X(10) VALUE SPACES.                     
