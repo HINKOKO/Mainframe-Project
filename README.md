@@ -7,6 +7,7 @@
 Join us as we embark on a data-driven adventure to transform **AJCFRAME company** operations. By harnessing the power of DB2 and advanced data integration techniques, we'll create a robust and scalable data infrastructure. This project will lay the foundation for future innovations, empowering AJCFRAME to make data-driven decisions that drive growth and success.
 <p align="center">
 	<img src="./assets/IBM.jpg" width="225">
+	<img src="./assets/zos.png" width="225">
 </p>
 
 
@@ -39,11 +40,15 @@ Join us as we embark on a data-driven adventure to transform **AJCFRAME company*
 
 <p align="center">
   <img src="./assets/Cobol.png" width="225">
+  <img src="./assets/ibmdb2.png" width="225">
+  <img src="./assets/jcl.png" width="225">
 </p>
 
 - **COBOL** A solid understanding of COBOL programming is essential for working with mainframe systems and their data.
 
 - **JCL** Knowledge of Job Control Language is crucial for executing jobs and managing data flows.
+   JCL is here to <i>describe to the operating system (z/OS) the work that has to be done, and the resources required to do that work</i>
+   
 - **DB2** Familiarity with DB2 database concepts and SQL is necessary for data manipulation and query operations.
 
 
@@ -154,7 +159,6 @@ If everything goes well for you - and if not we are here to help , here's what y
   similarly, using SPUFI, and queries like `select balance from customers;` and `select * from orders where o_no between 500 and 505` should output respectively:
 
   results to come baby !
-
 
 
 ## **Authors**
