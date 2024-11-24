@@ -51,7 +51,7 @@ Join us as we embark on a data-driven adventure to transform **AJCFRAME company*
 
 As an overview, here's a summary of the **4 JCL programs** in charge of running the entire project
 
-![screen](./assets/JCL_Summary.png)
+![screen](./assets/recap_JCL.png)
 
 In order to setup the project, at the root of the project, head over to `APIX/` folder.
 
