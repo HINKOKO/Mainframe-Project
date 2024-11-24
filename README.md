@@ -47,6 +47,24 @@ Join us as we embark on a data-driven adventure to transform **AJCFRAME company*
 - **DB2** Familiarity with DB2 database concepts and SQL is necessary for data manipulation and query operations.
 
 
+## **First things first**
+
+As an overview, here's a summary of the **4 JCL programs** in charge of running the entire project
+
+![screen](./assets/JCL_Summary.png)
+
+In order to setup the project, at the root of the project, head over to `APIX/` folder.
+
+-> The first **JCL** file you need to submit on Z/OS is the [initficp.jcl](./APIX/SOURCE/JCL/initficp.jcl) - as the name suggests, this **Job Control Language** file builds up all data files to start the project on a clean basis.
+
+-> The second **JCL** is called [cpssp.jcl](./APIX/SOURCE/JCL/cpsspp.jcl) - this one will compile and link-edit all the sub-programs needed by the main programs during further stages. 
+All those sub-programs will be ready-to-go in your `APIX.COBOL.LOAD` dataset.
+
+
+
+
+
+
 
 ##  **Part one - import new products**
 
