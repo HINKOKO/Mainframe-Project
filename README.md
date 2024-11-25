@@ -1,4 +1,4 @@
-<h1 style="text-align: center; font-weight: bold; font-size: 38px">No Mainframe, No Life</h1>
+# **AJCFRAME - Mainframe setup**
 
 ![screen](./assets/mainframe.webp)
 
@@ -17,7 +17,8 @@ Join us as we embark on a data-driven adventure to transform **AJCFRAME company*
 
 <i>To embark on this data-driven adventure, ensure you have the following prerequisites:</i>
 
-- **Mainframe Access:**
+- **Mainframe Access**
+  
 
   - The **WC3270** -> A reliable terminal emulator to connect to the mainframe system, coupled to the **ISPF** utility
   ![screen](./assets/screen_Readme.png)
@@ -48,7 +49,7 @@ Join us as we embark on a data-driven adventure to transform **AJCFRAME company*
 
 - **JCL** Knowledge of Job Control Language is crucial for executing jobs and managing data flows.
    JCL is here to <i>describe to the operating system (z/OS) the work that has to be done, and the resources required to do that work</i>
-   
+
 - **DB2** Familiarity with DB2 database concepts and SQL is necessary for data manipulation and query operations.
 
 
