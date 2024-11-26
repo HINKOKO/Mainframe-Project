@@ -1,68 +1,69 @@
-000100 IDENTIFICATION DIVISION.
-000200 PROGRAM-ID. DATEPROG.
-000300 AUTHOR.     HINKOKO.
-000400
-000500********************************************
-000600*PROGRAM INTENDED TO RETURN CURRENT DATE   *
-000700*FORMATTED AS  :                           *
-000800*  1 JANVIER 1601   (FOR COBOL PURISTS)    *
-000900********************************************
-001000
-001100 ENVIRONMENT DIVISION.
-001200 CONFIGURATION SECTION.
-001300 SPECIAL-NAMES.
-001400     DECIMAL-POINT IS COMMA.
-001500
-001600 DATA DIVISION.
-001700 WORKING-STORAGE SECTION.
-001800 COPY DAYMONTH.
-001900
-002000 01 WS-DATEJOUR.
-002100    05 WS-AA PIC XX.
-002200    05 WS-MM PIC XX.
-002300    05 WS-JJ PIC XX.
-002400
-002500 01 YEAR.
-002600    05 FILLER PIC X(2) VALUE '20'.
-002700    05 WS-YY  PIC X(2).
-002710
-002721 01 ED-JJ      PIC Z9.
-002722 01 WS-DATE      PIC X(30).
-002728
-002729 LINKAGE SECTION.
-002730 01 LS-DATE      PIC X(30).
-002731
-002750 PROCEDURE DIVISION USING LS-DATE.
-002800
-002900        ACCEPT WS-DATEJOUR FROM DATE
-003000        MOVE WS-MM TO MONTH-NUM
-003100
-003200        ACCEPT DAY-NUM     FROM DAY-OF-WEEK
-003300
-003400        IF DAY-NUM >= 1 AND DAY-NUM <= 7
-003500           MOVE    NAME-OF-DAY(DAY-NUM) TO TMP-DAY
-003600        ELSE
-003700           DISPLAY 'ERROR: INVALID DAY ' DAY-NUM
-003800        END-IF
-003900
-004000        IF MONTH-NUM >= 1 AND MONTH-NUM <= 12
-004100           MOVE    NAME-OF-MONTH(MONTH-NUM) TO TMP-MONTH
-004200        ELSE
-004300           DISPLAY 'ERROR: INVALID MONTH ' MONTH-NUM
-004400        END-IF
-004410* BUILDING UP THE STRING
-004500        MOVE WS-AA TO WS-YY
-004600        MOVE WS-JJ TO ED-JJ
-004700        STRING  TMP-DAY   DELIMITED BY SPACE
-004800                ' '       DELIMITED BY SIZE
-004900                ED-JJ     DELIMITED BY SIZE
-005000                ' '       DELIMITED BY SIZE
-005100                TMP-MONTH DELIMITED BY SPACE
-005200                ' '       DELIMITED BY SIZE
-005300                YEAR      DELIMITED BY SPACE
-005400           INTO WS-DATE
-005410        END-STRING
-005500        MOVE WS-DATE TO LS-DATE
-005600        DISPLAY 'DATE : ' WS-DATE
-005610
-005700        GOBACK.
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. DATEPROG.
+       AUTHOR.     HINKOKO.
+       
+      *********************************************
+      * PROGRAM INTENDED TO RETURN CURRENT DATE   *
+      * FORMATTED AS  :                           *
+      *   1 JANVIER 1601   (FOR COBOL PURISTS)    *
+      *********************************************
+       
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SPECIAL-NAMES.
+           DECIMAL-POINT IS COMMA.
+       
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       COPY DAYMONTH.
+       
+       01 WS-DATEJOUR.
+          05 WS-AA PIC XX.
+          05 WS-MM PIC XX.
+          05 WS-JJ PIC XX.
+       
+       01 YEAR.
+          05 FILLER PIC X(2) VALUE '20'.
+          05 WS-YY  PIC X(2).
+       
+       01 ED-JJ      PIC Z9.
+       01 WS-DATE      PIC X(30).
+       
+       LINKAGE SECTION.
+       01 LS-DATE      PIC X(30).
+       
+       PROCEDURE DIVISION USING LS-DATE.
+       
+              ACCEPT WS-DATEJOUR FROM DATE
+              MOVE WS-MM TO MONTH-NUM
+       
+              ACCEPT DAY-NUM     FROM DAY-OF-WEEK
+       
+              IF DAY-NUM >= 1 AND DAY-NUM <= 7
+                 MOVE    NAME-OF-DAY(DAY-NUM) TO TMP-DAY
+              ELSE
+                 DISPLAY 'ERROR: INVALID DAY ' DAY-NUM
+              END-IF
+       
+              IF MONTH-NUM >= 1 AND MONTH-NUM <= 12
+                 MOVE    NAME-OF-MONTH(MONTH-NUM) TO TMP-MONTH
+              ELSE
+                 DISPLAY 'ERROR: INVALID MONTH ' MONTH-NUM
+              END-IF
+      *** BUILDING UP THE STRING
+              MOVE WS-AA TO WS-YY
+              MOVE WS-JJ TO ED-JJ
+              STRING  TMP-DAY   DELIMITED BY SPACE
+                      ' '       DELIMITED BY SIZE
+                      ED-JJ     DELIMITED BY SIZE
+                      ' '       DELIMITED BY SIZE
+                      TMP-MONTH DELIMITED BY SPACE
+                      ' '       DELIMITED BY SIZE
+                      YEAR      DELIMITED BY SPACE
+                 INTO WS-DATE
+              END-STRING
+              MOVE WS-DATE TO LS-DATE
+              DISPLAY 'DATE : ' WS-DATE
+       
+              GOBACK.
+       

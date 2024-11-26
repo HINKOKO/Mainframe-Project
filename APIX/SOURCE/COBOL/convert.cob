@@ -1,66 +1,67 @@
-000100 IDENTIFICATION DIVISION.
-000200 PROGRAM-ID. CONVERT.
-000300 AUTHOR.     HINKOKO.
-000400***********************************************************
-000500*    THIS PROGRAM IS INTENDED TO RECEIVE A PRICE FROM A   *
-000600*    A FOREING COUNTRY AND RETURNS BACK THE USD PRICE     *
-000700***********************************************************
-000800
-000900 ENVIRONMENT DIVISION.
-001000 INPUT-OUTPUT SECTION.
-001100 FILE-CONTROL.
-001200        SELECT FCK ASSIGN TO CHANGEK
-001300        ORGANIZATION IS INDEXED
-001400        ACCESS MODE IS RANDOM
-001500        RECORD KEY IS CHG-CODE
-001600        FILE STATUS IS FS-FCK.
-001700*****************************************
-001800 DATA DIVISION.
-001900 FILE SECTION.
-002000 FD FCK.
-002100 01 ST-FCK.
-002200    05 CHG-CODE     PIC X(2).
-002300    05 CHG-RATE     PIC 9(2)V9(3).
-002400    05 FILLER       PIC X(73).
-002500
-002600 WORKING-STORAGE SECTION.
-002700 77 FS-FCK           PIC 99.
-002800 77 WS-ANO           PIC 9.
-002900 77 WS-VAR           PIC 9 VALUE 0.
-003000
-003100 LINKAGE SECTION.
-003200 01 LK-DEV-CODE      PIC X(2).
-003300 01 LK-PRICE         PIC 9(3)V99.
-003310 01 ERROR-MSG        PIC X(20).
-003400
-003500 PROCEDURE DIVISION USING LK-DEV-CODE LK-PRICE ERROR-MSG.
-003600
-003700       OPEN INPUT FCK
-003800       PERFORM CHECK-FILE-STATUS
-003900* SEARCH BY KEY - USE KSDS POWER
-004000       MOVE LK-DEV-CODE TO CHG-CODE
-004100       READ FCK
-004200       EVALUATE FS-FCK
-004300           WHEN ZERO
-004400                COMPUTE LK-PRICE = LK-PRICE * CHG-RATE
-004500           WHEN 23
-004510                COMPUTE LK-PRICE = 0
-004600                MOVE 'MONEY CODE NOT FOUND' TO ERROR-MSG
-004700           WHEN OTHER
-004800                DISPLAY 'ERROR: FILE STATUS -> ' FS-FCK
-004900                PERFORM ABEND-PROG
-005000       END-EVALUATE
-005100
-005200       CLOSE FCK
-005300       PERFORM CHECK-FILE-STATUS
-005400       GOBACK.
-005500
-005510* PARAGRAPHS
-005520 CHECK-FILE-STATUS.
-005530       IF FS-FCK NOT = 0 THEN
-005540             DISPLAY 'ERROR: FILE STATUS: ' FS-FCK
-005550             PERFORM ABEND-PROG
-005560       END-IF.
-005570
-005580 ABEND-PROG.
-005590       COMPUTE WS-ANO = WS-ANO / WS-VAR.
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CONVERT.
+       AUTHOR.     HINKOKO.
+      ************************************************************
+      *     THIS PROGRAM IS INTENDED TO RECEIVE A PRICE FROM A   *
+      *     A FOREING COUNTRY AND RETURNS BACK THE USD PRICE     *
+      ************************************************************
+       
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+              SELECT FCK ASSIGN TO CHANGEK
+              ORGANIZATION IS INDEXED
+              ACCESS MODE IS RANDOM
+              RECORD KEY IS CHG-CODE
+              FILE STATUS IS FS-FCK.
+      ****************************************
+       DATA DIVISION.
+       FILE SECTION.
+       FD FCK.
+       01 ST-FCK.
+          05 CHG-CODE     PIC X(2).
+          05 CHG-RATE     PIC 9(2)V9(3).
+          05 FILLER       PIC X(73).
+       
+       WORKING-STORAGE SECTION.
+       77 FS-FCK           PIC 99.
+       77 WS-ANO           PIC 9.
+       77 WS-VAR           PIC 9 VALUE 0.
+       
+       LINKAGE SECTION.
+       01 LK-DEV-CODE      PIC X(2).
+       01 LK-PRICE         PIC 9(3)V99.
+       01 ERROR-MSG        PIC X(20).
+       
+       PROCEDURE DIVISION USING LK-DEV-CODE LK-PRICE ERROR-MSG.
+       
+             OPEN INPUT FCK
+             PERFORM CHECK-FILE-STATUS
+        SEARCH BY KEY - USE KSDS POWER
+             MOVE LK-DEV-CODE TO CHG-CODE
+             READ FCK
+             EVALUATE FS-FCK
+                 WHEN ZERO
+                      COMPUTE LK-PRICE = LK-PRICE * CHG-RATE
+                 WHEN 23
+                      COMPUTE LK-PRICE = 0
+                      MOVE 'MONEY CODE NOT FOUND' TO ERROR-MSG
+                 WHEN OTHER
+                      DISPLAY 'ERROR: FILE STATUS -> ' FS-FCK
+                      PERFORM ABEND-PROG
+             END-EVALUATE
+       
+             CLOSE FCK
+             PERFORM CHECK-FILE-STATUS
+             GOBACK.
+       
+      *** PARAGRAPHS
+       CHECK-FILE-STATUS.
+             IF FS-FCK NOT = 0 THEN
+                   DISPLAY 'ERROR: FILE STATUS: ' FS-FCK
+                   PERFORM ABEND-PROG
+             END-IF.
+       
+       ABEND-PROG.
+             COMPUTE WS-ANO = WS-ANO / WS-VAR.
+       
