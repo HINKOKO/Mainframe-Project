@@ -349,7 +349,7 @@
       *** CONSTRUCTION PHRASE CONTACT ***
             STRING
                 'V' DELIMITED BY SIZE
-                 'otre contact au département ' DELIMITED BY SIZE
+                 'otre contact au dï¿½partement ' DELIMITED BY SIZE
                  F-DNAME  DELIMITED BY ' '
                 ' : '    DELIMITED BY SIZE
                  F-LNAME  DELIMITED BY ' '
