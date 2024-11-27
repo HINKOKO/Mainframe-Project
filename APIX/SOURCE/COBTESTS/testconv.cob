@@ -17,13 +17,13 @@
        COPY CHGBOOK.
       ***  BAD-CODES - STRING USED TO TEST ERROR MESSAGE ***
       ***   RETURNED BY OUR ROUTINE PROGRAM CONVERT      ***
-       77 BAD-CODES           PIC X(6)  VALUE 'KOLMUI'.
+       77 BAD-CODES           PIC X(10)  VALUE 'KOLMUIZZBB'.
 
        01 LIB                 PIC X(20).
-       01 L-SEP               PIC X(30) VALUE ALL '*'.
+       01 L-SEP               PIC X(30)  VALUE ALL '*'.
        01 RESULT              PIC 9(3)V9(2).
        01 EXPECTED            PIC 9(3)V9(2).
-       01 EXPECTED-MSG        PIC X(20) VALUE 'MONEY CODE NOT FOUND'.
+       01 EXPECTED-MSG        PIC X(20)  VALUE 'MONEY CODE NOT FOUND'.
 
      *** FOR CALLING & HANDLING ROUTINE RESPONSE ***
        01 LK-DEV-CODE         PIC X(2).
