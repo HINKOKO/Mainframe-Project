@@ -73,10 +73,10 @@ In order to properly setup, when you are at the root of the project, head over t
 
 -> The first **JCL** file you need to submit on Z/OS is the [initficp.jcl](./APIX/SOURCE/JCL/initficp.jcl) - as the name suggests, this **Job Control Language** file builds up all data files to start the project on a clean basis.
 
--> The second **JCL** is called [cpssp.jcl](./APIX/SOURCE/JCL/cpsspp.jcl) - this one will compile and link-edit all the sub-programs needed by the main programs during further stages. 
+-> The second **JCL** is called [cpssp.jcl](./APIX/SOURCE/JCL/cpsspp.jcl) - this one will compile and link-edit <u>all the sub-programs needed by the main programs during further stages.</u> 
 All those sub-programs will be ready-to-go in your `APIX.COBOL.LOAD` dataset.
 
-##  **Part one / Part two - Import new products / Insert sales**
+##  **Part one | Part two - Import new products | Insert new sales**
 
 #### Key Objectives
 
@@ -84,7 +84,7 @@ All those sub-programs will be ready-to-go in your `APIX.COBOL.LOAD` dataset.
 - Data Quality Assurance: Implement rigorous **data validation** and cleaning procedures to maintain data accuracy and consistency.
 - Seamless Integration: Ensure smooth integration of new products with existing data structures.
 
-#### **Launching part1 && part2**
+#### **Launching Part one and Part two**
 
 Simply submit to z/OS the Job written in [importp.jcl](./APIX/SOURCE/JCL/importp.jcl)
 **This z/OS job will:**
@@ -94,7 +94,7 @@ Simply submit to z/OS the Job written in [importp.jcl](./APIX/SOURCE/JCL/importp
 - generate a log file `LOGPART1`, listing all CSV lines which were rejected by DB2, and **why** they were rejected
 
 
-The core **COBOL** codes for **part one** are located in [part1p.cob](./APIX/SOURCE/COBOL/part1p.cob), and in sub-program [convert.cob](./APIX/SOURCE/COBOL/convert.cob). <br>
+The **COBOL** programs for **part one** are located in [part1p.cob](./APIX/SOURCE/COBOL/part1p.cob), and in sub-program [convert.cob](./APIX/SOURCE/COBOL/convert.cob). <br>
 The `part1p.cob` is intended to import all new product provided by AJCFRAME catalog, and convert foreign moneys to $USD dollars via the sub-program [convert.cob](./APIX/SOURCE/COBOL/convert.cob) <br>
 The `convert.cob` sub-routine uses the power of **VSAM - KSDS** file, we created a indexed-list of all currency codes and their respective change rate. The Key Sequenced Data Set (KSDS) allows an efficient "search & convert" for the foreign money.
 
@@ -110,7 +110,7 @@ The `part2p.cob` is intended to import new sales from Asia and Europe , and upda
 `convdate.cob` simply format the data in the US format. There again, we call a subroutine in the principle of "separation of concern", modularity, and COBOL-way-of-life, uh.
 
 
-## **Part three / part four / part five**
+## **Part three | four | five - Extract and edit bills | Generate XML | Summary of parts by supplier**
 
 #### Key Objectives
 
@@ -149,22 +149,34 @@ Finally, **part4** main brick is in [part4p.cob](./APIX/SOURCE/COBOL/part4p.cob)
 
 ## **Some examples**
 
-If everything goes well for you - and if not we are here to help , here's what you should get for each part:
-- **part1 && part2**
+If everything goes well for you - and if not we are here to help , here's what you should get for the following parts :
+- **Part one and Part 2**
   
-  running `select * from products;* in **SPUFI** tool should output you the list of newly inserted products, with their usd price:
+  running `select * from products;` in **SPUFI** tool should output you the list of newly inserted products, along with their usd price $
+
  <p align="center">
 	<img src="./assets/newprods.png" width="600">
 </p>
 
-  similarly, using SPUFI, and queries like `select balance from customers;` and `select * from orders where o_no between 500 and 505` should output respectively:
+  similarly, using SPUFI, and queries  `select balance from customers;` and `select * from orders where o_no between 500 and 505` should output respectively : 
 
-  results to come baby !
+   <p align="center">
+	<img src="./assets/select_from_orders.png" width="600">
+</p>
+
+The **APIX.AJC.LOGPART1.DATA** should be populated with products 06 and 07 - because these primary keys already exists in the initial database.
+
+   <p align="center">
+	<img src="./assets/logpart1.png" width="600">
+</p>
+
 
 
 ## **Authors**
 
-Rémi, Mathieu && Hinkoko
+Remi - available at - labonneremi@gmail.com <br>
+Mathieu - available at - m.courouble@outlook.fr <br>
+Hinkoko (actually Anthony) - available at - pizzoni.anthony@gmail.com
 
  
 
