@@ -2,11 +2,11 @@
        PROGRAM-ID. PART1P.
        AUTHOR.     HINKOKO.
       ********************************************************************
-      * 	THIS PROGRAM IS INTENDED TO :                              *
-      * 		- PARSE CSV FILE FOR PREPARING A DB12 INSERT        *
-      * 		- CALL A ROUTINE TO CONVERT PRICE IN USD            *
-      * 		- FORMAT DESCRIPTION PRODUCT IN A NICE CAMEL CASE   *
-      * 		- PERFORM THE DB2 INSERTION                         *
+      * 	THIS PROGRAM IS INTENDED TO :                                   *
+      * 		- PARSE CSV FILE FOR PREPARING A DB12 INSERT                 *
+      * 		- CALL A ROUTINE TO CONVERT PRICE IN USD                     *
+      * 		- FORMAT DESCRIPTION PRODUCT IN A NICE CAMEL CASE            *
+      * 		- PERFORM THE DB2 INSERTION                                  *
       *              - GENERETE AN ERROR LOG FILE                        *
       ********************************************************************
        
